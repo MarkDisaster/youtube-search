@@ -7,16 +7,16 @@ function SearchBar({ updateLoadedVideos }) {
 
    const handleSubmit = (e) => {
       e.preventDefault()
+
       youtube.get(`/search`, {
          params: {
             q: searchTerm,
          }
       })
          .then((res) => {
-            updateLoadedVideos(res.data)
-            console.log(res.data)
+            updateLoadedVideos(res.data.items)
+            console.log(res.data.items)
          });
-
 
       console.log('poslední state:' + searchTerm)
    }
@@ -25,10 +25,7 @@ function SearchBar({ updateLoadedVideos }) {
       setSearchTerm(e.target.value)
    }
 
-
    return (
-
-
       <div className="App">
          <form onSubmit={handleSubmit}>
             <label>Video Search</label>
