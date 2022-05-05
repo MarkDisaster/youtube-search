@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
-import SearchBar from './SearchBar'
-import VideoDetail from './VideoDetail'
-import VideoList from './VideoList';
-
-import './App.css';
+import SearchBar from './components/SearchBar'
+import VideoDetail from './components/VideoDetail'
+import VideoList from './components/VideoList';
+import PopularVideoList from './components/PopularVideoList';
 
 function App() {
 
@@ -14,10 +13,16 @@ function App() {
   /*Tuhle funkci přenesu do SearchBar.js pomocí parametru v souboru SearchBar.js */
   const updateLoadedVideos = (videos) => {
     setLoadedVideos(videos)
+    setSelectedVideo(null)
   }
 
   const handleVideoSelect = (video) => {
     setSelectedVideo(video)
+  }
+
+  let popularVideoList
+  if (loadedVideos.length < 1) {
+    popularVideoList = <PopularVideoList handleVideoSelect={handleVideoSelect} />
   }
 
 
@@ -26,6 +31,7 @@ function App() {
       <SearchBar updateLoadedVideos={updateLoadedVideos} />
       <VideoDetail selectedVideo={selectedVideo} />
       <VideoList loadedVideos={loadedVideos} handleVideoSelect={handleVideoSelect} />
+      {popularVideoList}
     </div>
   );
 }
