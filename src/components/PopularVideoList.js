@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import youtube from '../apis/youtube';
 import VideoList from './VideoList';
 
-function PopularVideoList({ handleVideoSelect }) {
+function PopularVideoList({ handleVideoSelect, listVideoHeader }) {
 
    const [popularVideoList, setPopularVideoList] = useState([])
 
@@ -22,7 +22,7 @@ function PopularVideoList({ handleVideoSelect }) {
    console.log('popular: ' + popularVideoList)
    return (
       <div>
-         <VideoList loadedVideos={popularVideoList} handleVideoSelect={handleVideoSelect} />
+         <VideoList loadedVideos={popularVideoList} handleVideoSelect={handleVideoSelect} listVideoHeader={listVideoHeader} />
       </div>
    );
 }

@@ -20,18 +20,24 @@ function App() {
     setSelectedVideo(video)
   }
 
-  let popularVideoList
+  let showVideoList
+  let listVideoHeader = 'Populární videa v ČR'
   if (loadedVideos.length < 1) {
-    popularVideoList = <PopularVideoList handleVideoSelect={handleVideoSelect} />
+    listVideoHeader = 'Populární videa v ČR'
+    showVideoList = <PopularVideoList handleVideoSelect={handleVideoSelect} listVideoHeader={listVideoHeader} />
+
+  } else {
+    listVideoHeader = 'Vyhledaná videa'
+    showVideoList = <VideoList loadedVideos={loadedVideos} handleVideoSelect={handleVideoSelect} listVideoHeader={listVideoHeader} />
+
   }
 
 
   return (
-    <div className="App">
+    <div className="App bg-gray-50 font-sans">
       <SearchBar updateLoadedVideos={updateLoadedVideos} />
       <VideoDetail selectedVideo={selectedVideo} />
-      <VideoList loadedVideos={loadedVideos} handleVideoSelect={handleVideoSelect} />
-      {popularVideoList}
+      {showVideoList}
     </div>
   );
 }
