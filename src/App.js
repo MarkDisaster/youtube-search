@@ -34,7 +34,7 @@ function App() {
 
 
   return (
-    <div className="App bg-gray-50 font-sans">
+    <div className="App bg-gray-50 text-gray-700 font-sans">
       <SearchBar updateLoadedVideos={updateLoadedVideos} />
       <VideoDetail selectedVideo={selectedVideo} />
       {showVideoList}

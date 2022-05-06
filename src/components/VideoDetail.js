@@ -1,9 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 
 function VideoDetail({ selectedVideo }) {
+
+  const [showedDescription, setShowedDescription] = useState(false)
+
   if (!selectedVideo) {
-    return <div>
-    </div>;
+    return <div></div>;
+  }
+
+  const showMore = (e) => {
+    if (!showedDescription) {
+      setShowedDescription(true)
+      e.target.innerHTML = 'ZOBRAZIT MÉNĚ'
+
+    } else {
+      setShowedDescription(false)
+      e.target.innerHTML = 'ZOBRAZIT VÍCE'
+    }
   }
 
   const videoSrc = `https://www.youtube.com/embed/${selectedVideo.id.videoId}`;
@@ -17,9 +30,12 @@ function VideoDetail({ selectedVideo }) {
           </div>
         </div>
       </div>
-      <div className="max-w-screen-lg w-full py-5 max-h-24 overflow-y-hidden">
-        <h1 className="text-xl font-medium">{selectedVideo.snippet.title}</h1>
-        <p>{selectedVideo.snippet.description}</p>
+      <div className=" border-b border-solid">
+        <div className={"description max-w-screen-lg w-full text-sm py-5 overflow-y-hidden " + (!showedDescription ? 'max-h-28' : '')}>
+          <h1 className="text-xl font-medium">{selectedVideo.snippet.title}</h1>
+          <p>{selectedVideo.snippet.description}</p>
+        </div>
+        <button type="button" onClick={showMore} className="text-xs mt-8 mb-5 font-medium">ZOBRAZIT VÍCE</button>
       </div>
     </div>
   );
