@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import youtube from '../apis/youtube';
+import logoIcon from '../assets/images/icon-youtube.svg';
 
 function SearchBar({ updateLoadedVideos }) {
 
@@ -29,7 +30,7 @@ function SearchBar({ updateLoadedVideos }) {
       <div className="bg-white">
          <div className="flex justify-center items-center">
             <div className="text-2xl font-mono font-medium absolute left-9">
-               <a href="/">LighTube</a>
+               <a href="/" className="flex"><img src={logoIcon} alt="Logo Icon" className="mr-1 w-7" />LilTube</a>
             </div>
             <div className="xl:w-96">
                <form onSubmit={handleSubmit} className="input-group relative flex flex-wrap items-stretch w-full my-4">

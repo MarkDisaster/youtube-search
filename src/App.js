@@ -32,11 +32,16 @@ function App() {
 
   }
 
+  let showVideoDetail
+  if (selectedVideo) {
+    showVideoDetail = <VideoDetail selectedVideo={selectedVideo} />
+  }
+
 
   return (
     <div className="App bg-gray-50 text-gray-700 font-sans">
       <SearchBar updateLoadedVideos={updateLoadedVideos} />
-      <VideoDetail selectedVideo={selectedVideo} />
+      {showVideoDetail}
       {showVideoList}
     </div>
   );
